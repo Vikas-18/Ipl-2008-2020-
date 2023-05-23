@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import "./components/app.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PurpleCapHolder from "./components/PurpleCapHolder";
+import OrangeCapHolder from "./components/OrangeCapHolder";
+import FinalsMatch from "./components/FinalsMatch";
+import LongestSix from "./components/LongestSix";
+import ErrorPage from "./components/ErrorPage";
+import EmergingPlayer from "./components/EmergingPlayer";
+import Footer from "./components/Footer";
+import HomePage from "./components/HomePage";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/purplecap" element={<PurpleCapHolder />} />
+          <Route path="/orangecap" element={<OrangeCapHolder />} />
+          <Route path="/finals" element={<FinalsMatch />} />
+          <Route path="/longestsix" element={<LongestSix />} />
+          <Route path="/emergingplayer" element={<EmergingPlayer />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </BrowserRouter>
+      <Footer />
+    </>
   );
 }
 
